@@ -2,9 +2,9 @@ import { React, useState, useEffect } from 'react'
 import './App.css';
 import { init, useConnectWallet } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
-import { ethers } from 'ethers'
-import {AppBar, Box, Grid, Button, Toolbar, IconButton, Typography} from '@mui/material';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//import { ethers } from 'ethers'
+import {AppBar, Box, Grid, Button, Toolbar, Typography} from '@mui/material';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DikDikMenu from "./components/DikDikMenu";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Mint from "./components/Mint";
@@ -76,12 +76,12 @@ function App() {
   const [bgImage, setBgImage] = useState(window.innerWidth >= 650 ? desktopImg : mobileImg)
 
   // create an ethers provider
-  let ethersProvider, signer;
-
-  if (wallet) {
-    ethersProvider = new ethers.providers.Web3Provider(wallet.provider, 'any');
-    signer = ethersProvider.getSigner();
-  }
+  // let ethersProvider, signer;
+  //
+  // if (wallet) {
+  //   ethersProvider = new ethers.providers.Web3Provider(wallet.provider, 'any');
+  //   signer = ethersProvider.getSigner();
+  // }
 
   useEffect(() => {
     function handleResize() {
