@@ -2,7 +2,7 @@ import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from "@mui/icons-material/Menu";
-import {IconButton} from "@mui/material";
+import {IconButton, Typography} from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function DikDikMenu() {
@@ -37,19 +37,39 @@ export default function DikDikMenu() {
                 }}
             >
                 <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onClick={handleClose} >Home</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <Typography variant="h5">
+                            Home
+                        </Typography>
+                    </MenuItem>
                 </Link>
                 <Link to="/mint" style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onClick={handleClose}>Mint</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <Typography variant="h5">
+                            Mint
+                        </Typography>
+                    </MenuItem>
                 </Link>
                 <Link to="/shop" style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onClick={handleClose}>Shop</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <Typography variant="h5">
+                            Shop
+                        </Typography>
+                    </MenuItem>
                 </Link>
                 <Link to="/forest" style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onClick={handleClose}>Forest</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <Typography variant="h5">
+                            Forest
+                        </Typography>
+                    </MenuItem>
                 </Link>
                 <Link to="/leaderboard" style={{ textDecoration: 'none', color: 'black' }}>
-                    <MenuItem onClick={handleClose}>Leaderboard</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <Typography variant="h5">
+                            Leaderboard
+                        </Typography>
+                    </MenuItem>
                 </Link>
             </Menu>
         </div>

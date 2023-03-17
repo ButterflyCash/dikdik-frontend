@@ -3,12 +3,10 @@ import './App.css';
 import { init, useConnectWallet } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
 import { ethers } from 'ethers'
-import { AppBar, Box, Grid, Button, Toolbar, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import {AppBar, Box, Grid, Button, Toolbar, IconButton, Typography} from '@mui/material';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import DikDikMenu from "./components/DikDikMenu";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Image from "mui-image";
 import Mint from "./components/Mint";
 import desktopImg from "./bg.png";
 import mobileImg from "./bg-small.png";
@@ -16,6 +14,7 @@ import Shop from "./components/Shop";
 import Forest from "./components/Forest";
 import Leaderboard from "./components/Leaderboard";
 import Home from "./components/Home";
+import "@fontsource/amatic-sc/700.css";
 
 const theme = createTheme({
   palette: {
@@ -32,7 +31,7 @@ const theme = createTheme({
       main: '#FFAD06',
     },
     action: {
-      disabledBackground: '#736b6b',
+      disabledBackground: '#2E7D32',
     },
   },
   components: {
@@ -45,6 +44,12 @@ const theme = createTheme({
         },
       },
     },
+  },
+  typography: {
+    fontFamily: [
+      'Amatic SC',
+      'Roboto',
+    ].join(','),
   },
 });
 
@@ -103,7 +108,9 @@ function App() {
                       fit="scale-down"
                       sx={{ maxHeight: 100}}
                   />*/}
-                  Dik-Dik Defense
+                  <Typography variant="h5">
+                    Dik-Dik Defense
+                  </Typography>
                 </Grid>
                 <Grid item xs={2} display="flex" justifyContent="center" sx={{ pr: 3 }}>
                   <Button
@@ -111,6 +118,7 @@ function App() {
                       variant="contained"
                       sx={{ minWidth: 100, height: 30}}
                       onClick={() => (wallet ? disconnect(wallet) : connect())}
+                      disabled
                   >
                     {connecting ? 'connecting' : wallet ? 'disconnect' : 'connect'}
                   </Button>
