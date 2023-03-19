@@ -1,0 +1,55 @@
+{
+  "attack-items": [
+    {
+      "name": "Basic Bow",
+      "image": "BOW",
+      "cost": 100,
+      "description": "+3 Ranged Att.",
+      "tokenId": 1
+    },
+    {
+      "name": "Basic Spellbook",
+      "image": "SPELLBOOK",
+      "cost": 100,
+      "description": "+3 Magic Att.",
+      "tokenId": 2
+    },
+    {
+      "name": "Basic Sword",
+      "image": "SWORD",
+      "cost": 100,
+      "description": "+3 Melee",
+      "tokenId": 3
+    }
+  ],
+  "defense-items": [
+    {
+      "name": "Basic Ranged Shield",
+      "image": "RANGED",
+      "cost": 100,
+      "description": "+3 Ranged Def.",
+      "tokenId": 400
+    },
+    {
+      "name": "Basic Magic Shield",
+      "image": "MAGIC",
+      "cost": 100,
+      "description": "+3 Magic Def.",
+      "tokenId": 401
+    },
+    {
+      "name": "Basic Melee Shield",
+      "image": "MELEE",
+      "cost": 100,
+      "description": "+3 Melee Def.",
+      "tokenId": 402
+    },
+    {
+      "name": "Basic Golden Shield",
+      "image": "GOLD",
+      "cost": 200,
+      "description": "+3 Any Def.",
+      "tokenId": 403
+    }
+  ]
+}

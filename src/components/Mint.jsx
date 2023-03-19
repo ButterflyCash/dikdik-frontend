@@ -7,11 +7,12 @@ import {useState} from "react";
 
 export default function Mint() {
     const [mintAmount, setMintAmount] = useState();
+    const [mintedAmount] = useState(0);
     const theme = useTheme();
 
     return (
         <Box sx={{padding: 2}}>
-            <Paper elevation={5} sx={{bgcolor:`${theme.palette.info.main}`, color: 'black', padding: 2, maxWidth: 600, margin: 'auto', boxShadow:'inset 0px 0px 10px rgba(0,0,0,0.9)'}}>
+            <Paper elevation={5} sx={{bgcolor:`${theme.palette.info.main}`, color: 'black', padding: 2, maxWidth: 900, margin: 'auto', boxShadow:'inset 0px 0px 10px rgba(0,0,0,0.9)'}}>
                 <Typography variant="h3" sx={{overflowWrap: 'break-word', textAlign: 'center', mb: 3}}>
                     Mint a Dik-Dik
                 </Typography>
@@ -21,6 +22,9 @@ export default function Mint() {
                 <Typography variant="h5" sx={{overflowWrap: 'break-word', textAlign: 'center', mb: 2}}>
                     To mint a Dik-Dik you will need AVAX and bCASH. Minting will use Chainlink VRF to assign stats
                     that will be used to defend against attackers in the Hardwood Forest.
+                </Typography>
+                <Typography variant="h5" sx={{overflowWrap: 'break-word', textAlign: 'center', mb: 1}}>
+                    {mintedAmount} / 500
                 </Typography>
                 <Box display="flex" justifyContent="center" sx={{mb: 1}} >
                     <Input
@@ -44,7 +48,7 @@ export default function Mint() {
                     </Button>
                 </Box>
                 <Typography variant="h5" sx={{overflowWrap: 'break-word', textAlign: 'center', mb: 1}}>
-                    Price: 0.5 AVAX + 2000 bCASH
+                    Price: 1 AVAX + 2000 bCASH
                 </Typography>
             </Paper>
         </Box>

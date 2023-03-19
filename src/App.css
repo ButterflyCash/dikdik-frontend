@@ -1,4 +1,12 @@
 body {
-    background: rgb(0, 116, 81);
+    background: rgb(0, 0, 0);
 
-  }
+}
+
+#buyButton {
+    background-color: #538DCE;
+}
+
+.buffer {
+    height: 200px;
+}

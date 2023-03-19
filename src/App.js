@@ -14,7 +14,7 @@ import Shop from "./components/Shop";
 import Forest from "./components/Forest";
 import Leaderboard from "./components/Leaderboard";
 import Home from "./components/Home";
-import "@fontsource/amatic-sc/700.css";
+import "@fontsource/amarante";
 
 const theme = createTheme({
   palette: {
@@ -47,7 +47,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      'Amatic SC',
+      'Amarante',
       'Roboto',
     ].join(','),
   },
@@ -130,26 +130,27 @@ function App() {
               style={{
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "cover",
-                height: '100vh'
+                height: '100%'
               }}
           >
-          <Switch>
-            <Route path="/mint">
-              <Mint/>
-            </Route>
-            <Route path="/shop">
-              <Shop/>
-            </Route>
-            <Route path="/forest">
-              <Forest/>
-            </Route>
-            <Route path="/leaderboard">
-              <Leaderboard/>
-            </Route>
-            <Route path="/">
-              <Home/>
-            </Route>
-          </Switch>
+            <Switch>
+              <Route path="/mint">
+                <Mint/>
+              </Route>
+              <Route path="/shop">
+                <Shop/>
+              </Route>
+              <Route path="/forest">
+                <Forest/>
+              </Route>
+              <Route path="/leaderboard">
+                <Leaderboard/>
+              </Route>
+              <Route path="/">
+                <Home/>
+              </Route>
+            </Switch>
+            <Box className="buffer"/>
           </Box>
         </Router>
       </div>
