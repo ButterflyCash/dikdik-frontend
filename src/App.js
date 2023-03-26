@@ -130,7 +130,7 @@ function App() {
               style={{
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "cover",
-                height: '100vh'
+                height:`${window.innerWidth >= 650 ? '200vh' : '100vh'}`
               }}
           >
             <Switch>
