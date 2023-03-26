@@ -16,6 +16,7 @@
     "@web3-onboard/injected-wallets": "^2.6.2",
     "@web3-onboard/react": "^2.6.1",
     "ethers": "^5.7.2",
+    "firebase": "^9.18.0",
     "mui-image": "^1.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
