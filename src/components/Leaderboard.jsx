@@ -11,7 +11,7 @@ export default function Leaderboard() {
     const [attackers, setAttackers] = useState([]);
     const [defenders, setDefenders] = useState([]);
     const [stats, setStats] = useState([]);
-    const [board, setBoard] = useState('attackers');
+    const [board, setBoard] = useState('stats');
 
     const getAttackers = async () => {
         const query = ref(db, "attackers");
