@@ -97,7 +97,7 @@ export default function Leaderboard() {
         getAttackers();
         getDefenders();
         getStats();
-    }, []);
+    });
 
     return (
         <Box sx={{padding: 2}}>
