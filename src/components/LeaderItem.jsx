@@ -1,14 +1,28 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import {Box, Paper, Typography, Grid} from '@mui/material'
 import Image from "mui-image";
 
 export default function LeaderItem(props) {
+    const [errored, setErrored] = useState(false);
     const id = props.id;
     const stats = props.stats;
     const type = props.type;
     const contractMapping = {
         "0x544995dc5A744cAfC646517F5ae813C61F023873":"chunkz",
         "0x544995dc5A744cAfC646517F5ae813C61F023874":"dikdik"
+    }
+
+    const fixError = () => {
+        if (!errored) {
+            setErrored(true);
+        }
+    }
+
+    const getImage = () => {
+        if (errored) {
+            return `/images/${type === 'defenders' ? 'dikdik' : contractMapping[stats.contract]}/unavailable.png`
+        }
+        return `/images/${type === 'defenders' ? 'dikdik' : contractMapping[stats.contract]}/${id}.png`;
     }
 
     return (
@@ -20,7 +34,8 @@ export default function LeaderItem(props) {
                         <Image
                             height="50px"
                             width="50px"
-                            src={`/images/${type === 'defenders' ? 'dikdik' : contractMapping[stats.contract]}/${id}.png`}
+                            src={getImage()}
+                            onError={fixError}
                             title={`${contractMapping[stats.contract]} ${id}`}
                         />
                     }
@@ -80,7 +95,8 @@ export default function LeaderItem(props) {
                         <Image
                             height="50px"
                             width="50px"
-                            src={`/images/${contractMapping[stats.contract]}/${id}.png`}
+                            src={getImage()}
+                            onError={fixError}
                             title={`${contractMapping[stats.contract]} ${id}`}
                         />
                     }

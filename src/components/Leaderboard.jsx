@@ -13,60 +13,6 @@ export default function Leaderboard() {
     const [stats, setStats] = useState([]);
     const [board, setBoard] = useState('stats');
 
-    const getAttackers = async () => {
-        const query = ref(db, "attackers");
-
-        return onValue(query, (snapshot) => {
-            const data = snapshot.val();
-            if (snapshot.exists()) {
-                let sortedData = Object.entries(data).sort(
-                    (p1, p2) => p2[1].success === p1[1].success ? p2[1].KO - p1[1].KO : p2[1].success - p1[1].success);
-                setAttackers(sortedData)
-            }
-        });
-    }
-
-    const getDefenders = async () => {
-        const query = ref(db, "defenders");
-
-        return onValue(query, (snapshot) => {
-            const data = snapshot.val();
-            if (snapshot.exists()) {
-                let sortedData = Object.entries(data).sort(
-                    (p1, p2) => p2[1].success === p1[1].success ? p1[1].KO - p2[1].KO : p2[1].success - p1[1].success);
-                setDefenders(sortedData)
-            }
-        });
-    }
-
-    const getStats = async () => {
-        const query = ref(db, "stats");
-
-        return onValue(query, (snapshot) => {
-            const data = snapshot.val();
-
-            if (snapshot.exists()) {
-                const mergedData = []
-
-                Object.keys(data["0x544995dc5A744cAfC646517F5ae813C61F023873"]).forEach(item => {
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].contract = "0x544995dc5A744cAfC646517F5ae813C61F023873";
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].id = item;
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].level = getLevel(data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item]);
-                    mergedData.push(data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item]);
-                })
-                Object.keys(data["0x544995dc5A744cAfC646517F5ae813C61F023874"]).forEach(item => {
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].contract = "0x544995dc5A744cAfC646517F5ae813C61F023874";
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].id = item;
-                    data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].level = getLevel(data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item]);
-                    mergedData.push(data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item]);
-                })
-                let sortedData = mergedData.sort(
-                    (p1, p2) => p2.level === p1.level ? p2.aggression - p1.aggression : p2.level - p1.level);
-                setStats(sortedData)
-            }
-        });
-    }
-
     const getLevel = (i) => {
         return i.aggression + i.toughness + i.smarts + i.vitality;
     }
@@ -94,10 +40,63 @@ export default function Leaderboard() {
     };
 
     useEffect(() => {
+        const getAttackers = async () => {
+            const query = ref(db, "attackers");
+
+            return onValue(query, (snapshot) => {
+                const data = snapshot.val();
+                if (snapshot.exists()) {
+                    let sortedData = Object.entries(data).sort(
+                        (p1, p2) => p2[1].success === p1[1].success ? p2[1].KO - p1[1].KO : p2[1].success - p1[1].success);
+                    setAttackers(sortedData)
+                }
+            });
+        }
+
+        const getDefenders = async () => {
+            const query = ref(db, "defenders");
+
+            return onValue(query, (snapshot) => {
+                const data = snapshot.val();
+                if (snapshot.exists()) {
+                    let sortedData = Object.entries(data).sort(
+                        (p1, p2) => p2[1].success === p1[1].success ? p1[1].KO - p2[1].KO : p2[1].success - p1[1].success);
+                    setDefenders(sortedData)
+                }
+            });
+        }
+
+        const getStats = async () => {
+            const query = ref(db, "stats");
+
+            return onValue(query, (snapshot) => {
+                const data = snapshot.val();
+
+                if (snapshot.exists()) {
+                    const mergedData = []
+
+                    Object.keys(data["0x544995dc5A744cAfC646517F5ae813C61F023873"]).forEach(item => {
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].contract = "0x544995dc5A744cAfC646517F5ae813C61F023873";
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].id = item;
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item].level = getLevel(data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item]);
+                        mergedData.push(data["0x544995dc5A744cAfC646517F5ae813C61F023873"][item]);
+                    })
+                    Object.keys(data["0x544995dc5A744cAfC646517F5ae813C61F023874"]).forEach(item => {
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].contract = "0x544995dc5A744cAfC646517F5ae813C61F023874";
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].id = item;
+                        data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item].level = getLevel(data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item]);
+                        mergedData.push(data["0x544995dc5A744cAfC646517F5ae813C61F023874"][item]);
+                    })
+                    let sortedData = mergedData.sort(
+                        (p1, p2) => p2.level === p1.level ? p2.aggression - p1.aggression : p2.level - p1.level);
+                    setStats(sortedData)
+                }
+            });
+        }
         getAttackers();
         getDefenders();
         getStats();
-    });
+    }, [setStats, setDefenders, setAttackers]);
 
     return (
         <Box sx={{padding: 2}}>
