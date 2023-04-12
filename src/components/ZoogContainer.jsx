@@ -18,9 +18,11 @@ export default function ZoogContainer(props) {
     }, [chunkz, dikdiks, setTokens]);
 
     const handleChange = (event, newChar) => {
-        setCharType(newChar);
-        setCurrentChar(0);
-        setErrored(false);
+        if (newChar !== null) {
+            setCharType(newChar);
+            setCurrentChar(0);
+            setErrored(false);
+        }
     };
 
     const handleCharChange = (event) => {
