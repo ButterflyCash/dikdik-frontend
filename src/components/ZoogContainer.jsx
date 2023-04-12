@@ -26,9 +26,7 @@ export default function ZoogContainer(props) {
     };
 
     const handleCharChange = (event) => {
-        if (event.target.value !== null) {
-            setCurrentChar(event.target.value);
-        }
+        setCurrentChar(event.target.value);
     };
 
     const fixError = () => {

@@ -36,7 +36,9 @@ export default function Leaderboard() {
     }
 
     const handleChange = (event, newBoard) => {
-        setBoard(newBoard);
+        if (newBoard !== null) {
+            setBoard(newBoard);
+        }
     };
 
     useEffect(() => {
