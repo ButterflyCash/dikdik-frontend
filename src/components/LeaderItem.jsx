@@ -27,7 +27,7 @@ export default function LeaderItem(props) {
 
     return (
         type === 'attackers' || type === 'defenders' ?
-        <Paper elevation={5} key={id} sx={{width: '100%', height: 65, mx: 'auto', mt: 1, boxShadow: 3}}>
+        <Paper elevation={5} key={id} sx={{width: '100%', height: 85, mx: 'auto', mt: 1, boxShadow: 3}}>
             <Grid container alignItems='center'>
                 <Grid item xs={2} sx={{padding: 1}}>
                     {
@@ -40,8 +40,8 @@ export default function LeaderItem(props) {
                         />
                     }
                 </Grid>
-                <Grid item xs={1} sx={{px: 1}}>
-                    <Typography gutterBottom variant="body1" >
+                <Grid item xs={1} sx={{pl: 2}}>
+                    <Typography gutterBottom variant="body1" textAlign="center">
                         {id}
                     </Typography>
                 </Grid>
@@ -53,34 +53,76 @@ export default function LeaderItem(props) {
                     </Grid>
                     <Grid container>
                         <Grid item xs={3}>
-                            <Typography gutterBottom variant="body2">
+                            <Box display="flex" justifyContent="center">
                                 {
                                     type === 'attackers' ?
-                                        "A: " + stats.attacks.toString()
+                                        <Image
+                                        height="25px"
+                                        width="25px"
+                                        src={`/images/icons/SWORD-SWING.png`}
+                                        title={`Total Attacks`}
+                                        />
+                                    :
+                                        <Image
+                                            height="25px"
+                                            width="25px"
+                                            src={`/images/icons/SHIELD-ACTION.png`}
+                                            title={`Total Defenses`}
+                                        />
+                                }
+                            </Box>
+                            <Typography gutterBottom variant="body2" textAlign="center">
+                                {
+                                    type === 'attackers' ?
+                                        stats.attacks.toString()
                                         :
-                                        "D: " + stats.defenses.toString()
+                                        stats.defenses.toString()
                                 }
 
                             </Typography>
                         </Grid>
                         <Grid item xs={3}>
-                            <Typography gutterBottom variant="body2">
-                                S: {stats['success']}
+                            <Box display="flex" justifyContent="center">
+                                <Image
+                                    height="25px"
+                                    width="25px"
+                                    src={`/images/icons/TICK.png`}
+                                    title={`Successful ${type === 'attackers' ? 'attacks' : "defenses"}`}
+                                />
+                            </Box>
+                            <Typography gutterBottom variant="body2" textAlign="center">
+                                {stats['success']}
                             </Typography>
                         </Grid>
                         <Grid item xs={3}>
-                            <Typography gutterBottom variant="body2">
+                            <Box display="flex" justifyContent="center">
+                                <Image
+                                    height="25px"
+                                    width="25px"
+                                    src={`/images/icons/BAND-AID.png`}
+                                    title={`Damage ${type === 'attackers' ? 'done' : "taken"}`}
+                                />
+                            </Box>
+                            <Typography gutterBottom variant="body2" textAlign="center">
                                 {
                                     type === 'attackers' ?
-                                        "D: " + stats.damageDone.toString()
+                                        stats.damageDone.toString()
                                         :
-                                        "D: " + stats.damageTaken.toString()
+                                        stats.damageTaken.toString()
                                 }
                             </Typography>
                         </Grid>
                         <Grid item xs={3}>
-                            <Typography gutterBottom variant="body2">
-                                KO: {stats.KO}
+                            <Box display="flex" justifyContent="center">
+                                <Image
+                                    height="25px"
+                                    width="25px"
+                                    src={`/images/icons/BAM.png`}
+                                    title={`KO`}
+                                />
+                            </Box>
+                            <Typography gutterBottom variant="body2" textAlign="center">
+                                {stats.KO}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -101,18 +143,18 @@ export default function LeaderItem(props) {
                         />
                     }
                 </Grid>
-                <Grid item xs={1} sx={{px: 1}}>
+                <Grid item xs={1} sx={{pl: 2}}>
                     <Typography gutterBottom variant="body1">
                         {id}
                     </Typography>
                 </Grid>
-                <Grid item xs container direction="column" spacing={2} sx={{ml: 2}}>
+                <Grid item xs container direction="column" spacing={2} sx={{ml: 1}}>
                     <Grid item xs={5}>
-                        <Typography gutterBottom variant="body1" textAlign='right' sx={{pr: 2}}>
+                        <Typography gutterBottom variant="body1" textAlign='right' sx={{pr: 2, position: 'relative', right: 25}}>
                             {"..." + stats.owner.substring(25)}
                         </Typography>
                     </Grid>
-                    <Grid container>
+                    <Grid container sx={{ml: 1}} spacing={2}>
                         <Grid item xs={2}>
                             <Box display="flex" justifyContent="center">
                                 <Image
