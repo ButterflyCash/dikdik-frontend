@@ -36,12 +36,12 @@ export default function BuyItem(props) {
                 </Grid>
                 <Grid item xs={12}>
                     <Button
-                        id="buyButton"
+                        className="bcashButton"
                         variant="contained"
                         sx={{mt: 1}}
                         // onClick={() => ()}
                     >
-                        Buy &nbsp; <img src={"/images/small-bcash.png"} alt="bCASH logo" /> &nbsp; {cost * itemAmount}
+                        Buy &nbsp; <img src={"/images/med-bcash.png"} height="40px" alt="bCASH logo" /> &nbsp; {cost * itemAmount}
                     </Button>
                 </Grid>
             </Grid>

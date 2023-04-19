@@ -1,10 +1,11 @@
-import { React, useState, useEffect } from 'react'
+import {React, useState, useEffect, useRef} from 'react'
 import {Box, Card, CardContent, Grid, ToggleButton, ToggleButtonGroup, Typography, NativeSelect, InputLabel, FormControl} from '@mui/material';
 import Image from "mui-image";
 
 export default function ZoogContainer(props) {
     const chunkz = props.chunkz;
     const dikdiks = props.dikdiks;
+    const setChar = useRef(props.setChar);
     const [tokens, setTokens] = useState({})
     const [charType, setCharType] = useState('dikdik');
     const [currentChar, setCurrentChar] = useState(0);
@@ -15,18 +16,27 @@ export default function ZoogContainer(props) {
             "chunkz": chunkz ? chunkz : null,
             "dikdik": dikdiks ? dikdiks : null
         })
+
     }, [chunkz, dikdiks, setTokens]);
+
+    useEffect(() => {
+        setChar.current(charType, currentChar)
+    }, [tokens, setChar, charType, currentChar]);
 
     const handleChange = (event, newChar) => {
         if (newChar !== null) {
+            setChar.current = props.setChar;
             setCharType(newChar);
             setCurrentChar(0);
             setErrored(false);
+            setChar.current(newChar, 0)
         }
     };
 
     const handleCharChange = (event) => {
+        setChar.current = props.setChar;
         setCurrentChar(event.target.value);
+        setChar.current(charType, event.target.value)
     };
 
     const fixError = () => {
