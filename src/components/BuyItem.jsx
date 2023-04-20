@@ -36,7 +36,7 @@ export default function BuyItem(props) {
                 </Grid>
                 <Grid item xs={12}>
                     <Button
-                        className="bcashButton"
+                        id="buyButton"
                         variant="contained"
                         sx={{mt: 1}}
                         // onClick={() => ()}
