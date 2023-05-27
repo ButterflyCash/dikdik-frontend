@@ -6,6 +6,9 @@ import {equalTo, onValue, orderByChild, query, ref} from "firebase/database";
 import ZoogContainer from "./ZoogContainer";
 import ForestHeader from "./ForestHeader";
 import TokenContainer from "./TokenContainer";
+import DefendContainer from "./DefendContainer";
+import AttackContainer from "./AttackContainer";
+import BattleContainer from "./BattleContainer";
 
 export default function Forest() {
     const theme = useTheme();
@@ -74,6 +77,26 @@ export default function Forest() {
         }
     }
 
+    const sortBattles = () => {
+        if (chunkzStats.length > 0 && character.type === "chunkz") {
+            return chunkzStats[character.index].battles;
+        } else if (dikdikStats.length > 0) {
+            return dikdikStats[character.index].battles;
+        } else {
+            return [];
+        }
+    }
+
+    const battlesExist = () => {
+        if (chunkzStats.length > 0 && character.type === "chunkz") {
+            return chunkzStats[character.index].battles.length > 0;
+        } else if (dikdikStats.length > 0) {
+            return dikdikStats[character.index].battles.length > 0;
+        }
+
+        return false;
+    }
+
     return (
         <Box sx={{padding: 2}}>
             <Paper elevation={5} sx={{bgcolor:`${theme.palette.info.main}`, color: 'black', padding: 2, maxWidth: 900, margin: 'auto', boxShadow:'inset 0px 0px 10px rgba(0,0,0,0.9)'}}>
@@ -117,6 +140,21 @@ export default function Forest() {
                                         <TokenContainer
                                             name="bCASH"
                                         />
+                                }
+                                {
+                                    character.type === "dikdik" ?
+                                        <DefendContainer items={[0,1,4,2]}/>
+                                    :
+                                        <AttackContainer items={[1,0,4]}/>
+                                }
+                                {
+
+                                }
+                                {
+                                    battlesExist() ?
+                                        <BattleContainer battles={sortBattles()} charType={character.type}/>
+                                        :
+                                        ""
                                 }
                             </Grid>
                         </Grid>

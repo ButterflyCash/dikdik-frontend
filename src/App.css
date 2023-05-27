@@ -3,7 +3,7 @@ body {
 
 }
 
-#approveButton, #collectButton, #collectAndRetreatButton, #buyButton {
+#approveButton, #collectButton, #collectAndRetreatButton, #buyButton, #defendButton, #attackButton {
     background-color: #538DCE;
 }
 

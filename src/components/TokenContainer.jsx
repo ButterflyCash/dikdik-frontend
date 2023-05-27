@@ -67,7 +67,7 @@ export default function TokenContainer(props) {
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12} md={5} sx={{pl:1}}>
-                                    <Box display="flex" justifyContent="left">
+                                    <Box display="flex" justifyContent="center">
                                         <Button
                                             id="approveButton"
                                             variant="contained"
